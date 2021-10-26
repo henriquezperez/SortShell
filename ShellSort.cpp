@@ -124,6 +124,15 @@ void Intercambio(int &y,int &z){
 }
 
 /*
+
+void Impresion(int a[], int n){
+     cout<<"\nEl ordenamiento es ascendente:\n\n";
+    for (int i = 0; i < n; i++)
+    {
+        cout<<a[i]<<"|";
+    }
+}
+
 void intercambio(int &y, int &z){
     int aux;
     aux = y;
@@ -140,6 +149,7 @@ void ordenamientoShell(int a[], int n){
     {
         for (i = salto; i < n; i++)
         {
+            Impresion(a,n);
            j = i -salto;
            while (j>=0)
            {
@@ -156,18 +166,14 @@ void ordenamientoShell(int a[], int n){
         }
         salto = salto/2;
     }
+    cout<<endl;
 }
 
 int main(){
-    int a[] = {45,44,1,45,85,74};
-
-    ordenamientoShell(a,6);
-    cout<<"\nEl ordenamiento es ascendente:\n";
-    for (int i = 0; i < 6; i++)
-    {
-        cout<<a[i]<<"|";
-    }
-    
+    int a[] = {5,4,3,2,1,0,9,8,7};
+    ordenamientoShell(a,9);
+    Impresion(a,6);
+    cout<<endl;
     system("pause");
     return 0;
 }
