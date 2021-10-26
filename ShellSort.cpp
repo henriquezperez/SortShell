@@ -60,8 +60,57 @@ using namespace std;
     4, 12, 3, 24, 36, 16
 
 */
-void Intercambio(int &y, int &z);
-void SortShell(int a[], int n);
+void DivLine(){
+    cout<<"\n\n------------------------------------------------------------------\n";
+}
+
+void Impresion(int Arreglo[], int n){
+    cout<<"\nArreglo ordenado en ascendente:\n\n";
+    for (int i = 0; i < n; i++)
+    {
+        cout<<Arreglo[i]<<"|";
+    }
+    DivLine();
+    cout<<"\nArreglo ordenado en descendente:\n\n";
+    for (int i = n -1 ; i >=0; i--)
+    {
+        cout<<Arreglo[i]<<"|";
+    }
+}
+
+void Intercambio(int &y, int &z){ //Cambia los valores de las posiciones j(y) y k(z)
+    int aux;
+    aux = y;
+    y = z;
+    z = aux;
+}
+
+void OrdenamientoShell(int Arreglo[], int n){
+    int salto, i,j,k; // j = posición izquierda, k = posición derecha
+    salto = n/2; //Cuantos posciones hace el salto iniciando con la posición cero
+    while (salto>0) // Mientras sea 1 el proceso de intercambio termina, pero si es cero, termina definitivamente
+    {
+        for (i = salto; i < n; i++) //Iteramos
+        {
+            //Impresion(Arreglo,n); //Muestra la impresion por cada iteración de cambio
+           j = i -salto; //Mueve una posición adelante cuando i aumenta
+           while (j>=0)
+           {
+               k = j + salto; // Hace el salto de posición
+               if (Arreglo[j]<=Arreglo[k]) //Evaluación el valor de las posición
+               {    
+                   j--; //Baja una posición 
+               }
+               else{
+                   Intercambio(Arreglo[j],Arreglo[k]); //De lo contrario se hace un intercambio
+                   j -= salto; //Aqui mantenemos los saltos hasta que Arreglo[j]<=Arreglo[k] en todo el arreglo
+               }
+           }  
+        }
+        salto = salto/2; // Una vez iterados los saltos, vuelve a dividir y se hace menos saltos hasta llegar a 1
+    }
+    cout<<endl;
+}
 
 int main(){
     cout<<"\n\tM\x82todo de ordenaci\xa2n SHELL\n\n";
@@ -74,107 +123,9 @@ int main(){
        cout<<i+1<<"-"<<"n\xa3mero:> ";
        cin>>Arreglo[i];
     }
-    SortShell(Arreglo,cantidad);
-    cout<<"\nEl arreglo ordenado ascendente es:\n";
-    for (int i = 0; i < cantidad; i++)
-    {
-        cout<<Arreglo[i]<<"|";
-    }
-    cout<<"\n\nEl arreglo ordenado descendente es:\n";
-    for (int i = cantidad -1 ; i >=0; i--)
-    {
-        cout<<Arreglo[i]<<"|";
-    }
+    OrdenamientoShell(Arreglo,cantidad);
+    Impresion(Arreglo,cantidad);
     cout<<endl<<endl;
     system("pause");
     return 0;
 }
-
-void SortShell(int a[], int n){
-
-    int salto=0, i=0, j=0, k=0;
-    salto = n/2;
-    while (salto>0) //Mientras que el salto sea a 1, si es 0 termina el proceso
-    {
-        for (i = salto; i < n; i++)
-        {
-            j = i - salto;
-            while (j>=0)
-            {
-                k = j + salto;
-                if (a[j] <= a[k]) // Si esta ordenado
-                {
-                    j--;
-                }
-                else{ // de lo contrario intercambio de valor en la posicion
-                    Intercambio(a[j],a[k]);
-                    j -= salto;
-                }   
-            }
-        }
-        salto = salto/2; // Si esta ordenado la primera ronda, sigue hasta que el salto se a 1
-    }
-}
-
-void Intercambio(int &y,int &z){
-    int aux;
-    aux = y;
-    y = z;
-    z = aux;
-}
-
-/*
-
-void Impresion(int a[], int n){
-     cout<<"\nEl ordenamiento es ascendente:\n\n";
-    for (int i = 0; i < n; i++)
-    {
-        cout<<a[i]<<"|";
-    }
-}
-
-void intercambio(int &y, int &z){
-    int aux;
-    aux = y;
-    y = z;
-    z = aux;
-}
-
-void ordenamientoShell(int a[], int n){
-
-    int salto, i,j,k;
-    salto = n/2;
-
-    while (salto>0)
-    {
-        for (i = salto; i < n; i++)
-        {
-            Impresion(a,n);
-           j = i -salto;
-           while (j>=0)
-           {
-               k = j + salto;
-               if (a[j]<=a[k])
-               {    
-                   j--;
-               }
-               else{
-                   intercambio(a[j],a[k]);
-                   j -= salto;
-               }
-           }      
-        }
-        salto = salto/2;
-    }
-    cout<<endl;
-}
-
-int main(){
-    int a[] = {5,4,3,2,1,0,9,8,7};
-    ordenamientoShell(a,9);
-    Impresion(a,6);
-    cout<<endl;
-    system("pause");
-    return 0;
-}
-*/
