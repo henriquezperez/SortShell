@@ -99,7 +99,7 @@ void OrdenamientoShell(int Arreglo[], int n){
                k = j + salto; // Hace el salto de posición
                if (Arreglo[j]<=Arreglo[k]) //Evaluación el valor de las posición
                {    
-                   j--; //Baja una posición 
+                   j = -1; //Baja una posición para salir del while j>=0
                }
                else{
                    Intercambio(Arreglo[j],Arreglo[k]); //De lo contrario se hace un intercambio
