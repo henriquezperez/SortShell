@@ -24,9 +24,9 @@ using namespace std;
     4, 12, 16, 24, 36, 3
 
     En el método de inserción directa, los saltos se hacen de una posición en una posición y se necesitará
-    cinco comparaciones.
+    cinco comparaciones para los elementos que este contiguo.
 
-    En el método SHELL, si los saltos son de dos posiciones, se realizan tres comparaciones
+    En cambio en el método SHELL, si los saltos son de dos posiciones, se realizan tres comparaciones
 
     4, 12, 16, 24, 36, 3
 
@@ -87,22 +87,22 @@ void Intercambio(int &y, int &z){ //Cambia los valores de las posiciones j(y) y 
 
 void OrdenamientoShell(int Arreglo[], int n){
     int salto, i,j,k; // j = posición izquierda, k = posición derecha
-    salto = n/2; //Cuantos posciones hace el salto iniciando con la posición cero
+    salto = n/2; //Cuantas posciones hace el salto iniciando con la posición cero
     while (salto>0) // Mientras sea 1 el proceso de intercambio termina, pero si es cero, termina definitivamente
     {
         for (i = salto; i < n; i++) //Iteramos
         {
             //Impresion(Arreglo,n); //Muestra la impresion por cada iteración de cambio
-           j = i -salto; //Mueve una posición adelante cuando i aumenta
+           j = i -salto; //Mueve una posición adelante cuando i aumenta (izquierda)
            while (j>=0)
            {
-               k = j + salto; // Hace el salto de posición
-               if (Arreglo[j]<=Arreglo[k]) //Evaluación el valor de las posición
+               k = j + salto; // Hace el salto de posición (derecha)
+               if (Arreglo[j]<=Arreglo[k]) //Evaluación el valor de las posiciones
                {    
                    j = -1; //Baja una posición para salir del while j>=0
                }
                else{
-                   Intercambio(Arreglo[j],Arreglo[k]); //De lo contrario se hace un intercambio
+                   Intercambio(Arreglo[j],Arreglo[k]); //De lo contrario se hace un intercambio en las posiciones
                    j -= salto; //Aqui mantenemos los saltos hasta que Arreglo[j]<=Arreglo[k] en todo el arreglo
                }
            }  
