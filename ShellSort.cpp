@@ -106,6 +106,7 @@ void OrdenamientoShell(int Arreglo[], int n){
                    j -= salto; //Aqui mantenemos los saltos hasta que Arreglo[j]<=Arreglo[k] en todo el arreglo
                }
            }  
+             //Impresion(Arreglo,n); 
         }
         salto = salto/2; // Una vez iterados los saltos, vuelve a dividir y se hace menos saltos hasta llegar a 1
     }
