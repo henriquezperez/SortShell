@@ -41,7 +41,7 @@ using namespace std;
     aux : variable auxiliar que contrenda a la variable 'j'
     y & z : número de intercambio
 
-                                   4 <= 24 = Si                 16 <= 3 = No, hacer intercambio.
+                                   4 <= 24? -> Si                 16 <= 3? -> No, hacer intercambio.
     a[j]      a[k]               a[4]     a[24]                      a[16]     a[3]
     ┌───────────┐                ┌───────────┐                        ┌───────────┐
     v           v                v           v                        v           v
